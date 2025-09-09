@@ -362,16 +362,30 @@ const BookDetailPage = () => {
 
                 {/* PDF Container */}
                 <div className="flex-1">
-                  <iframe
-                    src={`${import.meta.env.VITE_API_URL}/storage/${
-                      book.pdf_file_path
-                    }#toolbar=0&navpanes=0&scrollbar=0`}
-                    className="w-full h-full border-none"
-                    title={`PDF Viewer - ${book.title}`}
-                  />
+                  {/* Desktop: iframe langsung */}
+                  <div className="hidden md:block w-full h-full">
+                    <iframe
+                      src={`${import.meta.env.VITE_API_URL}/storage/${
+                        book.pdf_file_path
+                      }#toolbar=0&navpanes=0&scrollbar=0`}
+                      className="w-full h-full border-none"
+                      title={`PDF Viewer - ${book.title}`}
+                    />
+                  </div>
+
+                  {/* Mobile: Google Docs Viewer */}
+                  <div className="block md:hidden w-full h-full">
+                    <iframe
+                      src={`https://docs.google.com/gview?embedded=true&url=${
+                        import.meta.env.VITE_API_URL
+                      }/storage/${book.pdf_file_path}`}
+                      className="w-full h-full border-none"
+                      title={`PDF Viewer Mobile - ${book.title}`}
+                    />
+                  </div>
                 </div>
 
-                {/* Simple Footer */}
+                {/* Footer */}
                 <div className="p-3 border-t bg-gray-50 text-center">
                   <span className="text-sm text-gray-600">
                     Gunakan tombol ✕ di atas untuk menutup
