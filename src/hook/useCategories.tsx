@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Categories } from "../types/Categories";
 
+const VITE_APP_API_URL = import.meta.env.VITE_APP_API_URL;
+
 const useCategories = () => {
   const [categories, setCategories] = useState<Categories[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -9,7 +11,7 @@ const useCategories = () => {
 
   useEffect(() => {
     axios
-      .get<Categories[]>(`${import.meta.env.VITE_APP_API_URL}/api/categories`)
+      .get<Categories[]>(`${VITE_APP_API_URL}/api/categories`)
       .then((response) => {
         setCategories(response.data);
         setLoading(false);

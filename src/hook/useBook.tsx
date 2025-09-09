@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Book } from "../types/Book";
 
+const VITE_APP_API_URL = import.meta.env.VITE_APP_API_URL;
+
 const useBooks = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -10,7 +12,7 @@ const useBooks = () => {
 
   useEffect(() => {
     axios
-      .get<Book[]>(`${import.meta.env.VITE_APP_API_URL}/api/book`)
+      .get<Book[]>(`${VITE_APP_API_URL}/api/book`)
       .then((response) => {
         setBooks(response.data);
         setLoading(false);
