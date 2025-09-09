@@ -320,7 +320,7 @@ const BookDetailPage = () => {
                     <h2 className="h3 pb-2">Jaminan Mutu</h2>
                     <div className="pt-4 flex items-center">
                       <i className="text-xl bx bx-check-circle text-[#456af8]"></i>
-                      <div>100% Produk Original</div>
+                      <div>100% Baca Gratis</div>
                     </div>
                   </section>
                   <div
